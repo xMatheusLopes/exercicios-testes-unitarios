@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpService } from './services/http.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,12 @@ export class AppComponent {
   title = 'exercicios';
 
   arrayNumbers: number[] = [];
+
+  constructor(private httpService: HttpService) {}
+
+  ngOnInit() {
+    this.httpService.getCEP().subscribe(res => console.log(res));
+  }
 
   sum(n1: number, n2: number): number {
     return n1 + n2;
